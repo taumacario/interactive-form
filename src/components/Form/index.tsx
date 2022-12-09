@@ -17,8 +17,9 @@ interface Input {
 }
 
 const schema = yup.object({
-  name: yup.string().typeError("Can't be blank").min(10, 'Invalid name').required(),
-  cardNumber: yup.string().min(15, 'Invalid number').max(19, 'Invalid number').required(), //.matches( /^[\d ]+$/ , 'Wrong format, numbers only')
+  name: yup.string().required("Can't be blank").min(10, 'Invalid name'),
+  //cardNumber: yup.string().required().matches( /^[\d]+$/ , 'Wrong format, numbers only'),
+  cardNumber: yup.number().positive().integer().typeError("Can't be blank").required(), 
   month: yup.number().positive().typeError("Can't be blank").integer()
     .lessThan(13, 'Invalid month').required(),
   year: yup.number().positive().typeError("Can't be blank").integer()
@@ -61,7 +62,6 @@ export function Form() {
         <S.Input 
           type="text" 
           placeholder="e.g. 1234 5678 9123 0000" 
-          
           id="cardNumber" 
           onInput={updateCardNumber} 
           value={cardNumber}
@@ -76,13 +76,13 @@ export function Form() {
         <InputMask
           // mask options
           mask={'9999 9999 9999 9999'}
+          maskPlaceholder="-"
           // input options
+          type={'text'}
+          placeholder="e.g. 1234 5678 9123 0000" 
           id="cardNumber" 
           value={cardNumber}
           className={errors.cardNumber ? ' input error' : 'input'}
-          maskPlaceholder="-"
-          type={'text'}
-          placeholder="e.g. 1234 5678 9123 0000" 
           {...register("cardNumber", { required: true , onChange: (e) => {updateCardNumber(e)}})}
         />
         {<span>{errors.cardNumber?.message}</span>}
