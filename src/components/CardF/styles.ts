@@ -36,6 +36,8 @@ export const Logo = styled.figure`
 export const CardNumber = styled.p`
   margin-top: 3.5rem;
   letter-spacing: 2px;
+  text-transform: uppercase;
+  //overflow: hidden;
 
   @media (min-width: 1024px) { 
     margin-top: 6.5rem;

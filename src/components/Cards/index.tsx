@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { FormContext } from '../../context/FormContext';
 import { CardB } from '../CardB';
 import { CardF } from '../CardF';
 import { Complete } from '../Complete';
@@ -6,6 +8,7 @@ import * as S from './styles'
 
 
 export function Cards() {
+  const {complete} = useContext(FormContext)
   return (
     <S.Wrapper>
       <S.ContainerCard>
@@ -19,8 +22,10 @@ export function Cards() {
       </S.ContainerCard>
 
       <S.ContainerForm>
-         {/* <Form />  */}
-        <Complete /> 
+        {complete ?
+          <Complete /> :
+          <Form /> 
+        }
       </S.ContainerForm>
     </S.Wrapper>
   );

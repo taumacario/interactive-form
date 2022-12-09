@@ -5,7 +5,7 @@ import * as S from './styles'
 import LogoCardImg from '../../images/card-logo.svg'
 
 export function CardF() {
-  const {name, month, year } = useContext(FormContext);
+  const {name, month, year, cardNumber } = useContext(FormContext);
 
   return (
     <S.Card>
@@ -13,7 +13,7 @@ export function CardF() {
       <img src={LogoCardImg} alt="card logo" />
     </S.Logo>
     <S.CardNumber>
-      0000 0000 0000 0000
+      {cardNumber ? cardNumber : '0000 0000 0000 0000'}
     </S.CardNumber>
     <S.CardDetails>
       <S.CardName>

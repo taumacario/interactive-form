@@ -17,6 +17,40 @@ export const Field = styled.div`
   @media (min-width: 768px) {
     margin-top: 2.5rem;
   }
+
+  span {
+    color: red;
+    font-size: 11px;
+  }
+
+  .input {
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    border: 1px solid var(--light-grayish-violet);
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 1.6rem;
+    letter-spacing: 1.3px;
+    margin-left: 0.3rem;
+
+    &.error {
+      border: 1px solid red;
+    }
+
+    &:focus {
+      outline: 1px solid #5b41e9;
+    } 
+  }
+`
+
+export const ErrorMsg = styled.div`
+  display: flex;
+  gap: 20px;
+
+  span {
+    color: red;
+    font-size: 11px;
+  }
 `
 
 export const CardDetails = styled.div`
@@ -55,28 +89,20 @@ export const Input = styled.input`
   font-size: 1.6rem;
   letter-spacing: 1.3px;
   margin-left: 0.3rem;
-  text-transform: uppercase;
 
-   &::placeholder{
-    text-transform: initial;
+  &.error {
+    border: 1px solid red;
+  }
+
+  &:focus {
+    outline: 1px solid #5b41e9;
   } 
+  
 
   /* &:active {
     border-color: #5b41e9;
     //border-image: linear-gradient(45deg, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
     //border-image-slice: 1;
-  } */
-
-  &:focus {
-    //outline: 0.7px solid #5b41e9;
-  }
-
-  &:focus:invalid {
-    //outline: 1px solid red;
-  } 
-  /* 
-  &:valid {
-    border: 1px solid #5b41e9;
   } */
 `
 export const Button = styled.button`
